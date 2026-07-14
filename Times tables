@@ -1,0 +1,16 @@
+Times-tables-app/
+│
+├── index.html
+├── style.css
+├── app.js
+├── manifest.json
+├── sw.js
+│
+├── assets/
+│   ├── icons/
+│   ├── sounds/
+│   ├── images/
+│
+├── levels/
+├── data/
+└── README.md
