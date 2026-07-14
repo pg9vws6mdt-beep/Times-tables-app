@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Times Table Quest</title>
+
+<link rel="manifest" href="manifest.json">
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#2b7cff;
+    color:white;
+    text-align:center;
+}
+
+header{
+    padding:30px;
+}
+
+h1{
+    font-size:42px;
+    margin-bottom:5px;
+}
+
+h2{
+    font-weight:normal;
+}
+
+.card{
+    background:white;
+    color:#222;
+    width:90%;
+    max-width:500px;
+    margin:auto;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+select,input{
+    width:90%;
+    padding:15px;
+    margin:10px;
+    font-size:22px;
+    border-radius:10px;
+}
+
+button{
+
+    background:#2b7cff;
+    color:white;
+    border:none;
+    border-radius:12px;
+    padding:16px 30px;
+    font-size:22px;
+    cursor:pointer;
+
+}
+
+button:hover{
+
+    background:#135fd4;
+
+}
+
+#question{
+
+    font-size:40px;
+    margin:30px;
+
+}
+
+#feedback{
+
+    font-size:28px;
+    min-height:40px;
+
+}
+
+#score{
+
+    margin-top:20px;
+    font-size:22px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🏆 Times Table Quest</h1>
+
+<h2>Become a Maths Champion!</h2>
+
+</header>
+
+<div class="card">
+
+<label>
+
+Choose your table
+
+</label>
+
+<br><br>
+
+<select id="table">
+
+<option value="2">2 Times Table</option>
+<option value="3">3 Times Table</option>
+<option value="4">4 Times Table</option>
+<option value="5">5 Times Table</option>
+<option value="6">6 Times Table</option>
+<option value="7">7 Times Table</option>
+<option value="8">8 Times Table</option>
+<option value="9">9 Times Table</option>
+<option value="10">10 Times Table</option>
+<option value="11">11 Times Table</option>
+<option value="12">12 Times Table</option>
+
+</select>
+
+<div id="question"></div>
+
+<input
+type="number"
+id="answer"
+placeholder="Your answer">
+
+<br>
+
+<button onclick="checkAnswer()">
+
+Submit
+
+</button>
+
+<div id="feedback"></div>
+
+<div id="score">
+
+Score: 0
+
+</div>
+
+</div>
+
+<script>
+
+let score=0;
+
+let correctAnswer=0;
+
+function newQuestion(){
+
+let table=parseInt(document.getElementById("table").value);
+
+let number=Math.floor(Math.random()*12)+1;
+
+correctAnswer=table*number;
+
+document.getElementById("question").innerHTML=
+
+table+" × "+number+" = ?";
+
+document.getElementById("answer").value="";
+
+}
+
+function checkAnswer(){
+
+let answer=parseInt(document.getElementById("answer").value);
+
+if(answer===correctAnswer){
+
+score++;
+
+document.getElementById("feedback").innerHTML="✅ Correct!";
+
+}
+
+else{
+
+document.getElementById("feedback").innerHTML=
+
+"❌ Correct answer: "+correctAnswer;
+
+}
+
+document.getElementById("score").innerHTML=
+
+"Score: "+score;
+
+newQuestion();
+
+}
+
+document.getElementById("table").addEventListener(
+
+"change",
+
+newQuestion
+
+);
+
+newQuestion();
+
+</script>
+
+</body>
+
+</html>
